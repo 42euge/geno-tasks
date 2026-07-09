@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "geno-tasks"
+version = "0.1.0"
+description = "Node-linked task manager + LLM wiki synthesis for the geno ecosystem."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "42euge" }]
+requires-python = ">=3.11"
+dependencies = [
+    "geno-pear @ git+https://github.com/42euge/geno-pear.git",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+geno-tasks = "geno_tasks.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["geno_tasks*"]

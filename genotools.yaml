@@ -1,0 +1,8 @@
+name: geno-tasks
+version: "0.1.0"
+description: >-
+  Node-linked task manager + LLM wiki synthesis for the geno ecosystem.
+  Tasks live in ~/.geno/tasks/, tied to object-notation registry nodes.
+layer: workspace
+skills:
+  - skills/geno-tasks/SKILL.md
