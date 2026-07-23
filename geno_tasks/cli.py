@@ -41,9 +41,9 @@ def main(argv: list[str] | None = None) -> int:
     p_wiki = sub.add_parser("wiki", help="run LLM synthesis to generate/update wiki pages")
     p_wiki.add_argument("--node", default=None, help="synthesize a specific node only")
 
-    # watch — watch overview.md for edits, reconcile with task files via LLM
-    p_watch = sub.add_parser("watch", help="watch overview/overview.md; reconcile edits with task files")
-    p_watch.add_argument("--file", default=None, help="file to watch (default: ~/.geno/tasks/overview/overview.md)")
+    # watch — watch obsidian-only/overview.md for edits, reconcile with task files via LLM
+    p_watch = sub.add_parser("watch", help="watch obsidian-only/overview.md; reconcile edits with task files")
+    p_watch.add_argument("--file", default=None, help="file to watch (default: ~/.geno/tasks/obsidian-only/overview.md)")
     p_watch.add_argument("--interval", type=float, default=1.0, help="poll interval in seconds (default: 1.0)")
 
     # deploy — build + publish via configured DeployAdapter
@@ -134,7 +134,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"wiki pages → {paths.WIKI_DIR}")
 
     elif args.cmd == "watch":
-        watch_file = Path(args.file) if args.file else paths.TASKS_DIR / "overview" / "overview.md"
+        watch_file = Path(args.file) if args.file else paths.TASKS_DIR / "obsidian-only" / "overview.md"
         if not watch_file.exists():
             watch_file.parent.mkdir(parents=True, exist_ok=True)
             watch_file.write_text("# Work Overview\n\nEdit freely.\n"
